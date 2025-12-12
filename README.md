@@ -1,10 +1,13 @@
 Multi-Tenant Backend Service Implementation Plan
+
 This service will manage organizations in a multi-tenant architecture using MongoDB. It will use a Master Database for metadata and dynamic collections for each organization.
 
 User Review Required
 Database Architecture: We are using a single MongoDB instance but dynamic collections (org_<name>) for each tenant.
 Organization Update: Changing organization name will trigger a collection rename (or data migration) which can be expensive. For the MVP, we will assume reasonable usage or block renaming if user data is large (but we'll implement the renaming for now).
 Proposed Changes
+
+
 Project Structure
 backend/
   app/
@@ -33,6 +36,7 @@ Configuration settings (database URL, secret key, etc.)
 [NEW] 
 database.py
 AsyncIOMotorClient setup.
+
 Helper functions to get master DB and dynamic org collections.
 [NEW] 
 models.py
